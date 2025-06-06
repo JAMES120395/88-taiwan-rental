@@ -1,0 +1,6 @@
+cd /path/to/88-taiwan-rental
+git init
+git add .
+git commit -m "Initial commit of 88台灣租屋網"
+git remote add origin https://github.com/你的帳號/88-taiwan-rental.git
+git push -u origin main
