@@ -1,14 +1,1 @@
-
-# 88台灣租屋網
-
-這是一個簡易的租屋網站範例，使用 Next.js 製作，包含房源列表和模擬地圖區塊。
-
-## 使用方式
-
-1. 安裝相依套件：`npm install`
-2. 啟動開發伺服器：`npm run dev`
-3. 打開瀏覽器並前往 `http://localhost:3000`
-
----
-
-目前功能還很簡單，未來可加入登入、房源管理、地圖串接等功能。
+port { useState, useEffect } from "react";export default function Home() {  const [listings, setListings] = useState([]);  const [query, setQuery] = useState("");  useEffect(() => {    // 模擬抓取資料    setListings([      {        _id: "1",        title: "新竹市東區套房",        location: "新竹市東區",        price: "12000",        image: "https://picsum.photos/400/300?random=1"      },      {        _id: "2",        title: "竹北市兩房一廳",        location: "新竹縣竹北市",        price: "18000",        image: "https://picsum.photos/400/300?random=2"      }    ]);  }, []);  const handleSearch = () => {    // 假搜尋，實際會串API    alert("搜尋功能尚未實作");  };  return (    <div style={{padding: "20px", fontFamily: "Arial"}}>      <h1>88台灣租屋網</h1>      <input        placeholder="輸入地區或關鍵字..."        value={query}        onChange={(e) => setQuery(e.target.value)}        style={{padding: "8px", width: "300px"}}      />      <button onClick={handleSearch} style={{marginLeft: "10px", padding: "8px 16px"}}>        搜尋      </button>      <div style={{display: "flex", marginTop: "20px"}}>        <div style={{width: "50%", overflowY: "auto", maxHeight: "400px"}}>          {listings.map((item) => (            <div key={item._id} style={{border: "1px solid #ccc", marginBottom: "10px", borderRadius: "8px", padding: "10px"}}>              <img src={item.image} alt={item.title} style={{width: "100%", borderRadius: "8px"}}/>              <h3>{item.title}</h3>              <p>{item.location}</p>              <p style={{color: "orange", fontWeight: "bold"}}>{item.price} 元/月</p>            </div>          ))}        </div>        <div style={{width: "50%", backgroundColor: "#eee", marginLeft: "10px", borderRadius: "8px", display: "flex", justifyContent: "center", alignItems: "center"}}>          <p>地圖區域 (尚未串接 Google Maps API)</p>        </div>      </div>    </div>  );}
